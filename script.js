@@ -24,7 +24,7 @@ document.querySelector(".check").addEventListener(
 
         else if(chance==0){
             document.querySelector(".message").textContent = "🥴 You Lost the Game";
-            document.getElementById(".check").disabled = true;
+            document.querySelector(".check").disabled = true;
             sc=0;
             chance=0;
         }
@@ -44,7 +44,7 @@ document.querySelector(".check").addEventListener(
         else{
             document.querySelector(".message").textContent = "🎉 Correct number!!";
             document.querySelector(".number").textContent = magicNumber;
-            document.getElementById(".check").disabled = true;
+            document.querySelector(".check").disabled = true;
             sc++;
 
             if(sc>highsc){
@@ -78,6 +78,6 @@ document.querySelector(".again").addEventListener(
         document.querySelector(".guess").value = "";
         document.querySelector(".highscore").textContent = highsc;
         document.querySelector(".chance").textContent = chance;
-        document.getElementById(".check").disabled = false;
+        document.querySelector(".check").disabled = false;
     }
 );
