@@ -1,18 +1,9 @@
 "use strict";
 
-/*
-console.log(document.querySelector(".message").textContent);
-document.querySelector(".message").textContent="🎉 Correct number!!";
-
-document.querySelector(".guess").value=36;
-
-document.querySelector(".score").textContent=20;
-*/
-
 let magicNumber = Math.trunc(Math.random()*20) + 1;
-let sc = document.querySelector(".score").textContent;
+let sc = 20;
 let highsc = document.querySelector(".highscore").textContent;
-let chance = document.querySelector(".chance").textContent;
+let chance = 5;
 
 document.querySelector(".check").addEventListener(
     "click", function(){
@@ -22,14 +13,22 @@ document.querySelector(".check").addEventListener(
             document.querySelector(".message").textContent = "🚨 No Number";
         }
         else if(guessedNumber>magicNumber){
-            document.querySelector(".message").textContent = "📈 Too High";
-            sc--;
-            chance--;
-        }
-        else if(guessedNumber<magicNumber){
-            if(chance==0){
+            if(chance==1){
                 document.querySelector(".message").textContent = "🥴 You Lost the Game";
                 sc=0;
+                chance=0;
+            }
+            else{
+                document.querySelector(".message").textContent = "📈 Too High";
+                sc--;
+                chance--;
+            }
+        }
+        else if(guessedNumber<magicNumber){
+            if(chance==1){
+                document.querySelector(".message").textContent = "🥴 You Lost the Game";
+                sc=0;
+                chance=0;
             }
             else{
                 document.querySelector(".message").textContent = "📉 Too Low";
@@ -61,15 +60,17 @@ document.querySelector(".again").addEventListener(
     "click", function(){
         let highsc = document.querySelector(".highscore").textContent;
         magicNumber = Math.trunc(Math.random()*20) + 1;
+        sc=20;
+        chance=5;
 
         document.body.style.backgroundColor = "#222";
         document.querySelector(".message").textContent = "🤔 Start guessing...";
         document.querySelector(".number").textContent = "?";
         document.querySelector(".number").style.marginLeft= "43%";
         document.querySelector(".number").style.width="21rem";
-        document.querySelector(".score").textContent = "20";
+        document.querySelector(".score").textContent = sc;
         document.querySelector(".guess").value = "";
         document.querySelector(".highscore").textContent = highsc;
-        document.querySelector(".chance").textContent = "5";
+        document.querySelector(".chance").textContent = chance;
     }
 );
