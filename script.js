@@ -68,7 +68,7 @@ document.querySelector(".again").addEventListener(
         document.querySelector(".number").style.marginLeft= "43%";
         document.querySelector(".number").style.width="21rem";
         document.querySelector(".score").textContent = "20";
-        document.querySelector(".guess").textContent = "";
+        document.querySelector(".guess").value = "";
         document.querySelector(".highscore").textContent = highsc;
         document.querySelector(".chance").textContent = "5";
     }
