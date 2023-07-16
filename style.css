@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-size: 62.5%;
+  box-sizing: border-box;
+  font-family: 'Press Start 2P', sans-serif;
+}
+
+body{
+  color: #eee;
+  background-color: #222;
+  /* background-color: #60b347; */
+}
+
+header{
+  position: relative;
+  height: 35vh;
+  border-bottom: 7px solid #eee;
+}
+
+main{
+  height: 65vh;
+  color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.left{
+  display: flex;
+  width: 52rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.right {
+  width: 54rem;
+  font-size: 3rem;
+}
+
+h1{
+  font-size: 6vh;
+  padding-top: 13vh;
+  text-align: center;
+}
+
+.between{
+  position: absolute;
+  top: 3vh;
+  font-size: 2.3vh;
+  padding-left: 165vh;
+}
+
+.btn{
+  height: 10vh;
+  width: 30vh;
+  background-color: #eee;
+  color: #222;
+  font-size: 3vh;
+}
+
+.again{
+  position: absolute;
+  top: 3vh;
+  margin-left: 3vh;
+  text-align: center;
+}
+
+.number{
+  padding-top: 3vh;
+  padding-left: 1vh;
+  margin-top: 7vh;
+  text-align: center;
+  font-size: 12vh;
+  width: 21rem;
+  margin-left: 43%;
+  height: 17vh;
+  position: fixed;
+}
+
+.guess{
+  height: 15vh;
+  width: 35vh;
+  font-size: 6vh;
+  padding-left: 10vh;
+  margin-bottom: 2vh;
+  border: 4px solid #eee;
+}
+
+.btn:hover {
+  background-color: #ccc;
+}
+
+.message {
+  padding-top: 3rem;
+  margin-bottom: 8rem;
+  height: 3rem;
+}
+
+.label{
+  margin-bottom: 2rem;
+}
+
+.score{
+  font-size: 6vh;
+}
+
+.chance{
+  font-size: 6vh;
+}
+
+.highscore{
+  font-size: 6vh;
+}
