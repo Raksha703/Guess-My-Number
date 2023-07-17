@@ -1,63 +1,68 @@
 "use strict";
 
-/*
-console.log(document.querySelector(".message").textContent);
-document.querySelector(".message").textContent="🎉 Correct number!!";
-
-document.querySelector(".guess").value=36;
-
-document.querySelector(".score").textContent=20;
-*/
-
 let magicNumber = Math.trunc(Math.random()*20) + 1;
-let sc = 20;
+let sc = 5;
 let highsc = document.querySelector(".highscore").textContent;
-let chance = 5;
+
+const displayMessage = function(message){
+    document.querySelector(".message").textContent = message;
+}
+
+const disbleCheck = function(message){
+    document.querySelector(".check").disabled = Boolean(message);
+}
+
+const displayNumber = function(message){
+    document.querySelector(".number").textContent = message;
+}
+
+const displayHighScore = function(message){
+    document.querySelector(".highscore").textContent = message;
+}
+
+const displayScore = function(message){
+    document.querySelector(".score").textContent = message;
+    document.querySelector(".chance").textContent = message;
+}
+
+const changeStyle = function(b, m, w){
+    document.body.style.backgroundColor = b;
+    document.querySelector(".number").style.marginLeft= m;
+    document.querySelector(".number").style.width= w;
+}
 
 document.querySelector(".check").addEventListener(
     "click", function(){
         let guessedNumber = Number(document.querySelector(".guess").value);
 
         if(!guessedNumber){
-            document.querySelector(".message").textContent = "🚨 No Number";
+            displayMessage("🚨 No Number");
         }
 
-        else if(chance==0){
-            document.querySelector(".message").textContent = "🥴 You Lost the Game";
-            document.querySelector(".check").disabled = true;
+        else if(sc==0){
+            displayMessage("🥴 You Lost the Game");
+            disbleCheck(true);
             sc=0;
-            chance=0;
         }
 
-        else if(guessedNumber>magicNumber){
-            document.querySelector(".message").textContent = "📈 Too High";
+        else if(guessedNumber!==magicNumber){
+            displayMessage(guessedNumber>magicNumber ? "📈 Too High" : "📉 Too Low");
             sc--;
-            chance--;
-        }
-
-        else if(guessedNumber<magicNumber){
-            document.querySelector(".message").textContent = "📉 Too Low";
-            sc--;
-            chance--;
         }
 
         else{
-            document.querySelector(".message").textContent = "🎉 Correct number!!";
-            document.querySelector(".number").textContent = magicNumber;
-            document.querySelector(".check").disabled = true;
-            sc++;
+            displayMessage("🎉 Correct number!!");
+            displayNumber(magicNumber);
+            disbleCheck(true);
 
             if(sc>highsc){
-                document.querySelector(".highscore").textContent = sc;
+                displayHighScore(sc);
             }
 
-            document.body.style.backgroundColor = "#60b347";
-            document.querySelector(".number").style.marginLeft= "30%";
-            document.querySelector(".number").style.width="42rem";
+            changeStyle("#60b347","30%","42rem");
         }
 
-        document.querySelector(".score").textContent = sc;
-        document.querySelector(".chance").textContent = chance;
+        displayScore(sc);
     }
 );
 
@@ -66,18 +71,14 @@ document.querySelector(".again").addEventListener(
     "click", function(){
         highsc = document.querySelector(".highscore").textContent;
         magicNumber = Math.trunc(Math.random()*20) + 1;
-        sc=20;
-        chance=5;
+        sc=5;
 
-        document.body.style.backgroundColor = "#222";
-        document.querySelector(".message").textContent = "🤔 Start guessing...";
-        document.querySelector(".number").textContent = "?";
-        document.querySelector(".number").style.marginLeft= "43%";
-        document.querySelector(".number").style.width="21rem";
-        document.querySelector(".score").textContent = sc;
+        changeStyle("#222", "43%", "21rem");
+        displayMessage("🤔 Start guessing...");
+        displayNumber("?");
+        displayScore(sc);
         document.querySelector(".guess").value = "";
-        document.querySelector(".highscore").textContent = highsc;
-        document.querySelector(".chance").textContent = chance;
-        document.querySelector(".check").disabled = false;
+        displayHighScore(highsc);
+        disbleCheck(false);
     }
 );
